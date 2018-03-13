@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "967776955963",
+    "firebase_url": "https://memegram-4576b.firebaseio.com",
+    "project_id": "memegram-4576b",
+    "storage_bucket": "memegram-4576b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967776955963:android:7c681bc85b95d0b2",
+        "android_client_info": {
+          "package_name": "com.decimalcorp.aditya.memegram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967776955963-42mnk1d47qnanmha4b7g4i33gv4pibh9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.decimalcorp.aditya.memegram",
+            "certificate_hash": "d909256f2ffe8433d90e29c61bfc4428ba84baeb"
+          }
+        },
+        {
+          "client_id": "967776955963-eteqdmp4o3ubi83pfhihsuji6tdov29o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRr1RZYBHgQTkUa7YJk7EBksEugJwuJgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967776955963-eteqdmp4o3ubi83pfhihsuji6tdov29o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
