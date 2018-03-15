@@ -16,10 +16,11 @@
         android:layout_width="wrap_content"
         android:layout_height="350dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="centerInside"
         android:layout_centerHorizontal="true"
         android:padding="1dp"
-        android:background="@drawable/image_border"
+        android:foreground="@drawable/image_border"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/selected"/>
     <TextView
         android:layout_width="match_parent"

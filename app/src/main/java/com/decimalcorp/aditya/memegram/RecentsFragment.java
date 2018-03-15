@@ -22,14 +22,6 @@ public class RecentsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-
-        // Create a storage reference from our app
-        StorageReference storageRef = storage.getReference();
-
-        // Create a reference with an initial file path and name
-        StorageReference pathReference = storageRef.child("images/stars.jpg");
-
-        // Create a reference to a file from a Google Cloud Storage URI
         StorageReference gsReference = storage.getReferenceFromUrl("gs://memegram-4576b.appspot.com/UserUploads/UserUploads");
 
     }

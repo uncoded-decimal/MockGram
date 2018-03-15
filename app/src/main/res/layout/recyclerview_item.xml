@@ -6,8 +6,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="170dp"
+        android:padding="2dp"
         android:id="@+id/image_recycler"
         android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
         android:layout_gravity="center"/>
 
 </LinearLayout>

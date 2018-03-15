@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mDatabase= FirebaseDatabase.getInstance().getReference();
-        mDatabase=mDatabase.child(user.getUid());
+        String s= user.getEmail();
+        String x=s.substring(0,s.indexOf('@'));
+        mDatabase=mDatabase.child(x);
         final DatabaseReference countLink = mDatabase.child("Count");
             countLink.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -117,5 +119,25 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    public Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(!isOnline())
+            Toast.makeText(getApplicationContext(),"No Internet Connection",Toast.LENGTH_SHORT).show();
     }
 }

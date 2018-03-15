@@ -89,7 +89,9 @@ public class ProfileFragment extends Fragment {
         map=new HashMap<String,String>();
         if(mUser!=null){
             mDatabaseReference= FirebaseDatabase.getInstance().getReference();
-            mDatabaseReference=mDatabaseReference.child(user.getUid());
+            String s= user.getEmail();
+            String x=s.substring(0,s.indexOf('@'));
+            mDatabaseReference=mDatabaseReference.child(x);
         }
         DatabaseReference cRef = mDatabaseReference.child("Count");
         DatabaseReference upRef = mDatabaseReference.child("Uploads");

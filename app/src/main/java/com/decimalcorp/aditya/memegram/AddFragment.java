@@ -65,7 +65,9 @@ public class AddFragment extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase=mDatabase.child(user.getUid());
+        String s= user.getEmail();
+        String x=s.substring(0,s.indexOf('@'));
+        mDatabase=mDatabase.child(x);
         final DatabaseReference countLink = mDatabase.child("Count");
         final DatabaseReference uploadLink = mDatabase.child("Uploads");
 
@@ -93,6 +95,11 @@ public class AddFragment extends Fragment {
         uploads.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(!isOnline()){
+                 Toast.makeText(context,"No Internet Connection",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 final StorageReference grandChild = children.child(getFileName(pickedImage));
                 StorageMetadata metadata = new StorageMetadata.Builder()
@@ -136,8 +143,8 @@ public class AddFragment extends Fragment {
                 }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        if (taskSnapshot.getBytesTransferred() != 0) {
-                            int k = (int) (taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount() * 100);
+                        int k = (int) (taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount() * 100);
+                        if (k > 0) {
                             dialog.setMessage("Uploading..." + k + "%");
                         }
                     }
@@ -192,4 +199,16 @@ public class AddFragment extends Fragment {
         return result;
     }
 
+    public Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
