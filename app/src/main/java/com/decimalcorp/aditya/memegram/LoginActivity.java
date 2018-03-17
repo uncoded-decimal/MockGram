@@ -83,7 +83,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 //Log.w(TAG, "Google sign in failed", e);
-                Toast.makeText(this,"Sign In Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Google Sign In Failed. Error Code = "+e.getStatusCode(), Toast.LENGTH_SHORT).show();
+                switch(e.getStatusCode()){
+                    case -1:
+                        Toast.makeText(this,"Wipe cache and login again", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        Toast.makeText(this,"Sign in Required", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5:
+                        Toast.makeText(this,"Invalid Account", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 6:
+                        Toast.makeText(this,"Resolution Required", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 7:
+                        Toast.makeText(this,"Network Error", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 8:
+                        Toast.makeText(this,"Internal Error", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 10:
+                        Toast.makeText(this,"Developer Error", Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         }
     }

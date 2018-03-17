@@ -206,7 +206,6 @@ public class AddFragment extends Fragment {
             boolean reachable = (returnVal==0);
             return reachable;
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return false;
